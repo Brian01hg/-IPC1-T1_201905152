@@ -1,0 +1,76 @@
+Parametros de una funcioo  por referenc 
+En la mayoría de los lenguajes de programación y en la teoría del compilador, el paso por referencia pasa por la referencia de un parámetro al que se llama. En otras palabras, el que “llama” y el que recibe la “llamada” hacen referencia y utilizan la misma variable para el parámetro.
+
+Cada vez que esta variable referenciada cambia, todas las funciones que hacen referencia a esta variable también cambian. Consejos:
+
+El paso por referencia es viable si necesitas llamar a una función que necesita modificar sus argumentos antes de reutilizarlos
+El pase por referencia consume menos memoria porque hace referencia a la misma variable siempre que sea necesario.
+
+Parametors por valor:
+El paso por valor pasa una copia de una variable como parámetro a las funciones. En este método, el valor de cada variable del llamador se duplica. También se copia en una nueva variable correspondiente del que recibe la “llamada”.
+
+Cada vez que la variable original cambia, no afecta al que recibe la “llamada”. Esto se debe a que el “destinatario” tiene una copia del parámetro original en lugar del propio parámetro. Consejos:
+
+El paso por valor es beneficioso cuando los cambios en la variable pasada no deben afectar al valor real
+El paso por valor crea una nueva variable ficticia cada vez, por lo que consume más memoria.
+
+EJEMPLO  DE PARAMETRO POR VALOR:
+
+public class Main {
+    public class Principal {
+        public static void main(String[] args) {
+            int a = 10;
+            metodoDos(a);
+            System.out.println("Variable a:" + a);
+        }
+
+        public static void metodoDos(int a) {
+            a = 20;
+            System.out.println("metodoDos: " + a);
+        }
+    }
+
+}
+
+EJEMPLO  DE PARAMETRO POR REFERECNIA:
+
+
+public class Main {
+    public class Principal  {
+
+        public class Persona {
+            private String nombre;
+            public String getNombre() {
+                return nombre;
+            }
+            public void setNombre(String nombre){
+                this.nombre = nombre;
+            }
+        }
+        public static void  main (String[] args) {
+            Persona p = new Persona();
+            p.setNombre("Brian");
+            mostrarNombre(p);
+            cambiarNombre(p);
+            mostrarNombre(p);
+        }
+        public static void mostrarNombre(Persona p){
+            System.out.println(p.getNombre());
+        }
+        public static void cambiarNombre(Persona p){
+            p.setNombre("Julian");
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
